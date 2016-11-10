@@ -139,9 +139,16 @@ export default class FeedItem extends React.Component {
             {
               data.comments.map((comment, i) => {
                 // i is comment's index in comments array
+                //***for some reason couldn't find likeCounter unless it is in this order***
+                // It took a whole day for me to figure out that this is where that problem came from.
+                // A WHOLE DAY. not 20 hours. not 22 hours. literally 24 hours.
                 return (
                   <Comment key={i}
                       author={comment.author}
+                      data ={comment}
+                      feedId ={this.state._id}
+                      likeCounter={comment.likeCounter}
+                      index ={i}
                       postDate={comment.postDate}>
                     {comment.contents}
                   </Comment>
